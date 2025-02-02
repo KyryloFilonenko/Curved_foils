@@ -1,0 +1,6 @@
+.ipynb_checkpoints/
+DATA/
+MiModule/
+Plots.cpp
+_tmp_simu.profile
+*.png
