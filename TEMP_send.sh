@@ -8,6 +8,7 @@ TUTO_FOLD=$2
 FAL_FOLD=/sps/nemo/sw/Falaise/install_develop/
 CONF_FAL=$FAL_FOLD/share/Falaise-4.1.0/resources/snemo/demonstrator/reconstruction/
 CONF_SEN=/sps/nemo/scratch/kfilonen/Falaise/MiModule/testing_products/
+TK_FOLD=$6
 
 if [ -f ${THRONG_DIR}/config/supernemo_profile.bash ]; then
 	source ${THRONG_DIR}/config/supernemo_profile.bash
@@ -23,16 +24,24 @@ flreconstruct -i $TUTO_FOLD/$3/Simu_$4.brio \
               -o $TUTO_FOLD/$3/Reco_$4.brio
 
 rm $TUTO_FOLD/$3/Simu_$4.brio
+
+# source /sps/nemo/scratch/chauveau/software/falaise/emchauve-pcd2cd/this_falaise.sh
+# ./$TK_FOLD/install_test.sh
+
+flreconstruct -i $TUTO_FOLD/$3/Reco_$4.brio -p $TK_FOLD/build/TKReconstructPipeline.conf -o $TUTO_FOLD/$3/TK_TTD_$4.brio
+rm $TUTO_FOLD/$3/Reco_$4.brio
+flreconstruct -i $TUTO_FOLD/$3/TK_TTD_$4.brio -p $TK_FOLD/PTD_tracking.conf -o $TUTO_FOLD/$3/TK_PTD_$4.brio
+rm $TUTO_FOLD/$3/TK_TTD_$4.brio
               
 cd $TUTO_FOLD/$3/
 
 #########
-flreconstruct -i $TUTO_FOLD/$3/Reco_$4.brio -p /sps/nemo/scratch/kfilonen/SNCuts/build/SNCutsPipeline.conf -o CUT.brio
+# flreconstruct -i $TUTO_FOLD/$3/Reco_$4.brio -p /sps/nemo/scratch/kfilonen/SNCuts/build/SNCutsPipeline.conf -o CUT.brio
 ###########
             
-flreconstruct -i $TUTO_FOLD/$3/Reco_$4.brio \
+flreconstruct -i $TUTO_FOLD/$3/TK_PTD_$4.brio \
               -p $CONF_SEN/p_MiModule_v00.conf
+
+rm $TUTO_FOLD/$3/TK_PTD_$4.brio
             
 mv Default.root $4_$5.root
-
-# rm $TUTO_FOLD/$3/Reco_$4.brio
