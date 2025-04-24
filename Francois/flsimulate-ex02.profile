@@ -13,17 +13,14 @@ calo_film_thickness = 25 um
 tracking_gas_material = "Nemo3"
 
 [registry="vertexes"]
-generator = "free_spot"
-generator/if_free_spot/x = 0 mm
-generator/if_free_spot/y = 0 mm
-generator/if_free_spot/z = 0 mm
+generator = "real_snrs1_source_full_foils_se82_bulk"
 
 [registry="primary_events"]
-generator = "Bi214"
+# generator = "Bi214_Po214"
+generator = "Se82.0nubb"
 
 [registry="simulation"]
 physics_mode = "Constructors"
 physics_mode/if_constructors/em_model = "standard"
 production_cuts = true
-output_profile = "none"
-
+output_profile = "all_details"
