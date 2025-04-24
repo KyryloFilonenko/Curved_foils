@@ -26,7 +26,8 @@ if [ "$CHOISE" = "new" ]; then
     read RUN_NAME
     echo "******************************************" 
     if [ ! -d $FAL_DIR/DATA/$RUN_NAME ]; then
-        SIMU_NAME=("0nu_Se82_flat" "0nu_Se82_bent" "2nu_Se82_flat" "2nu_Se82_bent" "Bi214_flat" "Bi214_bent" "Tl208_flat" "Tl208_bent")
+        # SIMU_NAME=("0nu_Se82_flat" "0nu_Se82_bent" "2nu_Se82_flat" "2nu_Se82_bent" "Bi214_flat" "Bi214_bent" "Tl208_flat" "Tl208_bent")
+        SIMU_NAME=("0nu_Se82_bent")
         SIMU_ARRAY=$(printf "\"%s\", " "${SIMU_NAME[@]}" | sed 's/, $//')
         echo "How many folders do you want to create?"
         read NUM_FOL
