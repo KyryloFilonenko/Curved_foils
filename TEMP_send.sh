@@ -32,14 +32,14 @@ flreconstruct \
       --output-file "$TUTO_FOLD/$3/Reco_$4.brio"
 # rm $TUTO_FOLD/$3/Simu_$4.brio 
 
-# flreconstruct -i $TUTO_FOLD/$3/Reco_$4.brio -p $TK_FOLD/testing/test2/pipeline.conf -o $TUTO_FOLD/$3/TK_TTD_$4.brio
+flreconstruct -i $TUTO_FOLD/$3/Reco_$4.brio -p $TK_FOLD/testing/test2/pipeline.conf -o $TUTO_FOLD/$3/TK_TTD_$4.brio
 # rm $TUTO_FOLD/$3/Reco_$4.brio
 
 flreconstruct \
       --verbosity "debug" \
       --mount-directory "flrecoex02@${TUTO_FOLD}" \
       --config "${TUTO_FOLD}/francois2_$4.conf" \
-      --input-file "$TUTO_FOLD/$3/Reco_$4.brio" \ # change to TTD
+      --input-file "$TUTO_FOLD/$3/TK_TTD_$4.brio" \
       --output-file "$TUTO_FOLD/$3/TK_PTD_$4.brio"
 # rm $TUTO_FOLD/$3/TK_TTD_$4.brio
               
