@@ -10,7 +10,7 @@
 
 FAL_DIR=/sps/nemo/scratch/kfilonen/Falaise
 MI_DIR=/sps/nemo/scratch/kfilonen/Falaise/MiModule
-TK_DIR=/sps/nemo/scratch/kfilonen/Falaise/TKReconstruct
+TK_DIR=/sps/nemo/scratch/kfilonen/Falaise/TKrec
 
 if [ ! -d ${FAL_DIR}/DATA ]; then
     mkdir ${FAL_DIR}/DATA
@@ -64,6 +64,9 @@ if [ "$CHOISE" = "new" ]; then
                 
                 cp $FAL_DIR/TEMP_Simu.conf $SIMU_DIR/Simu_$simu_name.conf # створити темплейт для конфігураційного файла та зміни сід для нього
                 sed "s|\$1|$RUN_DIR|g; s|\$2|$simu_name|g; s|\$3|$NUM_EV|g" "$FAL_DIR/TEMP_Simu.conf" > "$SIMU_DIR/Simu_$simu_name.conf"
+
+                cp $FAL_DIR/TEMP_francois1.conf $SIMU_DIR/francois1_$simu_name.conf
+                sed "s|\$1|$simu_name|g; s|\$2|$FAL_DIR/Francois|g" "$FAL_DIR/TEMP_francois1.conf" > "$SIMU_DIR/francois1_$simu_name.conf"
             
                 cp $FAL_DIR/TEMP_analyze.cpp $SIMU_DIR/analyze_$simu_name.cpp
                 sed "s|\$1|$MI_DIR|g; s|\$2|$MI_DIR|g; s|\$3|$NUM_FOL|g; s|\$4|$simu_name|g; s|\$5|$NUM_EV|g" "$FAL_DIR/TEMP_analyze.cpp" > "$SIMU_DIR/analyze_$simu_name.cpp"

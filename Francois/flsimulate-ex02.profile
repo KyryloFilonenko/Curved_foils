@@ -16,7 +16,6 @@ tracking_gas_material = "Nemo3"
 generator = "real_snrs1_source_full_foils_se82_bulk"
 
 [registry="primary_events"]
-# generator = "Bi214_Po214"
 generator = "Se82.0nubb"
 
 [registry="simulation"]
