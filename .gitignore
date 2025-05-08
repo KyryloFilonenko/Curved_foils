@@ -6,6 +6,5 @@ _tmp_simu.profile
 *.png
 untitled.txt
 TKReconstruct/
-TKrec/
 Plots_without_mf.cpp
 start_falaise.sh
