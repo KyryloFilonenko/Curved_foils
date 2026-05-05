@@ -1,7 +1,7 @@
 #!/bin/sh
 #SBATCH -t 0-$1
 #SBATCH -n 1
-#SBATCH --mem 8192M
+#SBATCH --mem 4096M
 #SBATCH --licenses sps
 
 TUTO_FOLD=$2
@@ -30,10 +30,10 @@ flreconstruct \
       --config "${TUTO_FOLD}/francois1_$4.conf" \
       --input-file "$TUTO_FOLD/$3/Simu_$4.brio" \
       --output-file "$TUTO_FOLD/$3/Reco_$4.brio"
-# rm $TUTO_FOLD/$3/Simu_$4.brio 
+rm $TUTO_FOLD/$3/Simu_$4.brio  # brio
 
 flreconstruct -i $TUTO_FOLD/$3/Reco_$4.brio -p $TK_FOLD/testing/test2/pipeline.conf -o $TUTO_FOLD/$3/TK_TTD_$4.brio
-# rm $TUTO_FOLD/$3/Reco_$4.brio
+rm $TUTO_FOLD/$3/Reco_$4.brio # brio
 
 flreconstruct \
       --verbosity "debug" \
@@ -41,77 +41,77 @@ flreconstruct \
       --config "${TUTO_FOLD}/francois2_$4.conf" \
       --input-file "$TUTO_FOLD/$3/TK_TTD_$4.brio" \
       --output-file "$TUTO_FOLD/$3/TK_PTD_$4.brio"
-# rm $TUTO_FOLD/$3/TK_TTD_$4.brio
+rm $TUTO_FOLD/$3/TK_TTD_$4.brio # brio
               
 cd $TUTO_FOLD/$3/
 
-flreconstruct -i $TUTO_FOLD/$3/TK_PTD_$4.brio \
-              -p $CONF_SEN/p_MiModule_v00.conf
-mv Default.root $4_$5.root
+# flreconstruct -i $TUTO_FOLD/$3/TK_PTD_$4.brio \  # removing eps0
+#               -p $CONF_SEN/p_MiModule_v00.conf
+# mv Default.root $4_$5.root
 
 ###################################################################################################################################
 ###################################################################################################################################
 flreconstruct -i $TUTO_FOLD/$3/TK_PTD_$4.brio -p $SN_FOLD/eps1.conf -o TK_PTD_SN_$4_eps1.brio
-# rm $TUTO_FOLD/$3/TK_PTD_$4.brio
+rm $TUTO_FOLD/$3/TK_PTD_$4.brio # brio
 flreconstruct -i $TUTO_FOLD/$3/TK_PTD_SN_$4_eps1.brio \
               -p $CONF_SEN/p_MiModule_v00.conf
 mv Default.root $4_$5_eps1.root
 
 flreconstruct -i TK_PTD_SN_$4_eps1.brio -p $SN_FOLD/eps2.conf -o TK_PTD_SN_$4_eps2.brio
-# rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps1.brio
+rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps1.brio # brio
 flreconstruct -i $TUTO_FOLD/$3/TK_PTD_SN_$4_eps2.brio \
               -p $CONF_SEN/p_MiModule_v00.conf
 mv Default.root $4_$5_eps2.root
 
 flreconstruct -i TK_PTD_SN_$4_eps2.brio -p $SN_FOLD/eps3.conf -o TK_PTD_SN_$4_eps3.brio
-# rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps2.brio
+rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps2.brio # brio
 flreconstruct -i $TUTO_FOLD/$3/TK_PTD_SN_$4_eps3.brio \
               -p $CONF_SEN/p_MiModule_v00.conf
 mv Default.root $4_$5_eps3.root
 
 flreconstruct -i TK_PTD_SN_$4_eps3.brio -p $SN_FOLD/eps4.conf -o TK_PTD_SN_$4_eps4.brio
-# rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps3.brio
+rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps3.brio # brio
 flreconstruct -i $TUTO_FOLD/$3/TK_PTD_SN_$4_eps4.brio \
               -p $CONF_SEN/p_MiModule_v00.conf
 mv Default.root $4_$5_eps4.root
 
 flreconstruct -i TK_PTD_SN_$4_eps4.brio -p $SN_FOLD/eps5.conf -o TK_PTD_SN_$4_eps5.brio
-# rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps4.brio
+rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps4.brio # brio
 flreconstruct -i $TUTO_FOLD/$3/TK_PTD_SN_$4_eps5.brio \
               -p $CONF_SEN/p_MiModule_v00.conf
 mv Default.root $4_$5_eps5.root
 
 flreconstruct -i TK_PTD_SN_$4_eps5.brio -p $SN_FOLD/eps6.conf -o TK_PTD_SN_$4_eps6.brio
-# rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps5.brio
+rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps5.brio # brio
 flreconstruct -i $TUTO_FOLD/$3/TK_PTD_SN_$4_eps6.brio \
               -p $CONF_SEN/p_MiModule_v00.conf
 mv Default.root $4_$5_eps6.root
 
 flreconstruct -i TK_PTD_SN_$4_eps6.brio -p $SN_FOLD/eps7.conf -o TK_PTD_SN_$4_eps7.brio
-# rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps6.brio
+rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps6.brio # brio
 flreconstruct -i $TUTO_FOLD/$3/TK_PTD_SN_$4_eps7.brio \
               -p $CONF_SEN/p_MiModule_v00.conf
 mv Default.root $4_$5_eps7.root
 
 flreconstruct -i TK_PTD_SN_$4_eps7.brio -p $SN_FOLD/eps8.conf -o TK_PTD_SN_$4_eps8.brio
-# rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps7.brio
+rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps7.brio # brio
 flreconstruct -i $TUTO_FOLD/$3/TK_PTD_SN_$4_eps8.brio \
               -p $CONF_SEN/p_MiModule_v00.conf
 mv Default.root $4_$5_eps8.root
 
 flreconstruct -i TK_PTD_SN_$4_eps8.brio -p $SN_FOLD/eps9.conf -o TK_PTD_SN_$4_eps9.brio
-# rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps8.brio
+rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps8.brio # brio
 flreconstruct -i $TUTO_FOLD/$3/TK_PTD_SN_$4_eps9.brio \
               -p $CONF_SEN/p_MiModule_v00.conf
 mv Default.root $4_$5_eps9.root
 
 flreconstruct -i TK_PTD_SN_$4_eps9.brio -p $SN_FOLD/eps10.conf -o TK_PTD_SN_$4_eps10.brio
-# rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps9.brio
+rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps9.brio # brio
 flreconstruct -i $TUTO_FOLD/$3/TK_PTD_SN_$4_eps10.brio \
               -p $CONF_SEN/p_MiModule_v00.conf
 mv Default.root $4_$5_eps10.root
 
-# rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps10.brio
+rm $TUTO_FOLD/$3/TK_PTD_SN_$4_eps10.brio # brio
 ###################################################################################################################################
 ###################################################################################################################################
 
