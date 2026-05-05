@@ -1,0 +1,33 @@
+# - Configuration
+
+#@description Simple pipeline using the TestModulePipeline
+#@key_label "name"
+#@meta_label "type"
+
+# - Module load section
+#[name="flreconstruct.plugins" type="flreconstruct::section"]
+#	plugins : string[1] = "SNCuts"
+#	SNCuts.directory : string = "@PROJECT_BINARY_DIR@/"
+#
+#[name="pipeline" type="SNCuts"]
+#useEventHasNEscapedParticles : boolean = true
+#nEscapedParticles : real = 2
+#
+#useEventHasTwoDistinctAssociatedCaloHits : boolean = true
+
+[name="flreconstruct.plugins" type="flreconstruct::section"]
+	plugins : string[1] = "SNCuts"
+	SNCuts.directory : string = "@PROJECT_BINARY_DIR@/"
+
+[name="pipeline" type="SNCuts"]
+useEventHasTwoCaloHits : boolean = true
+useEventHasTwoTracks : boolean = true
+# useEventHasTwoNegativeParticles : boolean = true
+useEventHasSumEnergyAbove : boolean = true
+minSumEnergy : real = 2700.0
+useEventHasSumEnergyBelow : boolean = true
+maxSumEnergy : real = 3300.0
+
+# useSDBDRC : boolean = true
+# minSumEnergy : real = 2700.0
+# maxSumEnergy : real = 3300.0

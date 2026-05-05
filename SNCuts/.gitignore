@@ -1,0 +1,11 @@
+# ignore brio files, these you should create yourself for testing. 
+*.brio
+
+test/*.brio
+test/*.cpp
+test/*.root
+
+lib/
+build/
+
+.vscode
